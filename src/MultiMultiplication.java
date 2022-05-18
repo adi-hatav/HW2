@@ -25,5 +25,4 @@ public class MultiMultiplication extends Multiplication {
         MultiAdditionString += this.numbers[i].toString() + ")";
         return MultiAdditionString;
     }
-}{
 }
