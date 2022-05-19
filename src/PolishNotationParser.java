@@ -1,45 +1,82 @@
-public class PolishNotationParser extends  ExpressionParser{
-
+public class PolishNotationParser extends ExpressionParser {
 
     @Override
     public Expression parse(String expression) {
         String[] listString = expression.split(" ");
-        int i = listString.length-1;
-        for( ;i>=0;i--)
-        {
-            if(isOperator(listString[i]))
-            {
-                String operator =listString[i];
-                String numA = listString[i+1];
-                String numB = (operator.equals("-u"))?"0":listString[i+2];
-                Expression temp = expressionByOperator(operator,numA,numB);
+        Expression[] allExpressions1 = new Expression[listString.length];
+        int correctArrayLength = listString.length;
+        for (int i = 0; i < listString.length; i++) {
+            if (isOperator(listString[i]))
+                allExpressions1[i] = new PrimitiveOperator(listString[i]);
+            else allExpressions1[i] = numberToClass(listString[i]);
+        }
+       // if(correctArrayLength == 1) return allExpressions1[0];
+        while (correctArrayLength != 1) {
+            for (int i = correctArrayLength - 1; i >= 0; i--) {
+                if (allExpressions1[i] instanceof PrimitiveOperator) {
+                    if (allExpressions1[i].toString().equals("-u")) {
+                        allExpressions1[i] = expressionByOperator("-u", allExpressions1[i + 1], numberToClass("0"));
+                        correctArrayLength--;
+                        allExpressions1 = shrinkArray(allExpressions1, i+1, 1);
+                        break;
+                    } else {
+                        allExpressions1[i] = expressionByOperator(allExpressions1[i].toString(), allExpressions1[i + 1], allExpressions1[i + 2]);
+                        correctArrayLength -= 2;
+                        allExpressions1 = shrinkArray(allExpressions1, i+1,2);
+                        break;
+                    }
 
-
+                }
             }
+
         }
-    }
-    private boolean isOperator(String character){
-        return character.equals("+") || character.equals("-") ||
-                character.equals("*") || character.equals("/") ||
-                character.equals("-u");
+        return allExpressions1[0];
+
     }
 
-    private Expression numberToClass(String num){
-        if(num.indexOf('.')== -1){
-            return new IntegerLiteral(Integer.parseInt(num));
+    private Expression[] shrinkArray(Expression[] expressions, int start, int len) {
+        Expression[] newArray = new Expression[expressions.length - len];
+        for (int i = 0; i < start; i++) {
+            newArray[i] = expressions[i];
         }
-        return new DoubleLiteral(Double.parseDouble(num));
+        for (int i = start + len; i < expressions.length; i++) {
+            newArray[i-len] = expressions[i];
+        }
+        return newArray;
+
     }
-    private Expression expressionByOperator(String operator,String numA, String numB){
-        Expression numAExpression = numberToClass(numA);
-        Expression numBExpression = numberToClass(numB);
-        switch (operator){
-            case ("+") :return new Addition(numAExpression,numBExpression);
-            case ("*") :return new Multiplication(numAExpression,numBExpression);
-            case ("/") :return new Division(numAExpression,numBExpression);
-            case ("-") :return new Subtraction(numAExpression,numBExpression);
-            case ("-U") :return new UnaryMinus(numAExpression);
-            default: return null;
+
+    @Override
+    public Expression parse(String expression) {
+        String[] listString = expression.split(" ");
+        Expression[] allExpressions1 = new Expression[listString.length];
+        int correctArrayLength = listString.length;
+        for (int i = 0; i < listString.length; i++) {
+            if (isOperator(listString[i]))
+                allExpressions1[i] = new PrimitiveOperator(listString[i]);
+            else allExpressions1[i] = numberToClass(listString[i]);
         }
+        // if(correctArrayLength == 1) return allExpressions1[0];
+        while (correctArrayLength != 1) {
+            for (int i = correctArrayLength - 1; i >= 0; i--) {
+                if (allExpressions1[i] instanceof PrimitiveOperator) {
+                    if (allExpressions1[i].toString().equals("-u")) {
+                        allExpressions1[i] = expressionByOperator("-u", allExpressions1[i + 1], numberToClass("0"));
+                        correctArrayLength--;
+                        allExpressions1 = shrinkArray(allExpressions1, i+1, 1);
+                        break;
+                    } else {
+                        allExpressions1[i] = expressionByOperator(allExpressions1[i].toString(), allExpressions1[i + 1], allExpressions1[i + 2]);
+                        correctArrayLength -= 2;
+                        allExpressions1 = shrinkArray(allExpressions1, i+1,2);
+                        break;
+                    }
+
+                }
+            }
+
+        }
+        return allExpressions1[0];
+
     }
 }
