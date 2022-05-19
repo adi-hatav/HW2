@@ -11,7 +11,7 @@ public class RoundedExpression extends Expression{
 
         double pow= Math.pow(10,numDigitToRound);
         double aux=numA.evaluate()*(pow);
-        this.roundedNum = ((int)aux)/pow;
+        this.roundedNum = Math.round(aux)/pow;
     }
 
     @Override
@@ -21,7 +21,7 @@ public class RoundedExpression extends Expression{
     }
     @Override
     public String toString() {
-        return "(-"+this.roundedNum+")";
+        return this.numA.toString();
     }
 }
 
