@@ -6,10 +6,11 @@ public class MultiMultiplication extends Multiplication {
         this.numbers = numbers;
 
     }
+
     @Override
     public double evaluate() {
         double eval = 1;
-        for(Expression num:this.numbers){
+        for (Expression num : this.numbers) {
             eval *= num.evaluate();
         }
         return eval;

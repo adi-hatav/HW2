@@ -15,8 +15,6 @@ public abstract class ExpressionParser {
     }
 
     protected Expression expressionByOperator(String operator, Expression expA, Expression expB) {
-        //Expression ExpressionA = numberToClass(expA);
-        //Expression numBExpression = numberToClass(numB);
         switch (operator) {
             case ("+"):
                 return new Addition(expA, expB);
