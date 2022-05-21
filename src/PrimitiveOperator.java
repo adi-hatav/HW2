@@ -1,7 +1,7 @@
-public class PrimitiveOperator extends Expression{
+public class PrimitiveOperator extends Expression {
     public String operator;
 
-    public PrimitiveOperator(String operator){
+    public PrimitiveOperator(String operator) {
         this.operator = operator;
     }
 

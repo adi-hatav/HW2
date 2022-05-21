@@ -16,12 +16,12 @@ public class PolishNotationParser extends ExpressionParser {
                     if (allExpressions[i].toString().equals("-u")) {
                         allExpressions[i] = expressionByOperator("-u", allExpressions[i + 1], numberToClass("0"));
                         correctArrayLength--;
-                        allExpressions = shrinkArray(allExpressions, i+1, 1);
+                        allExpressions = shrinkArray(allExpressions, i + 1, 1);
                         break;
                     } else {
                         allExpressions[i] = expressionByOperator(allExpressions[i].toString(), allExpressions[i + 1], allExpressions[i + 2]);
                         correctArrayLength -= 2;
-                        allExpressions = shrinkArray(allExpressions, i+1,2);
+                        allExpressions = shrinkArray(allExpressions, i + 1, 2);
                         break;
                     }
 
@@ -39,7 +39,7 @@ public class PolishNotationParser extends ExpressionParser {
             newArray[i] = expressions[i];
         }
         for (int i = start + len; i < expressions.length; i++) {
-            newArray[i-len] = expressions[i];
+            newArray[i - len] = expressions[i];
         }
         return newArray;
 

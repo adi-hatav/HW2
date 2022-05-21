@@ -1,4 +1,4 @@
-public class RoundedExpression extends Expression{
+public class RoundedExpression extends Expression {
 
     private Expression numA;
     private int numDigitToRound;
@@ -9,9 +9,9 @@ public class RoundedExpression extends Expression{
         this.numA = numA;
         this.numDigitToRound = numDigitToRound;
 
-        double pow= Math.pow(10,numDigitToRound);
-        double aux=numA.evaluate()*(pow);
-        this.roundedNum = Math.round(aux)/pow;
+        double pow = Math.pow(10, this.numDigitToRound);
+        double aux = numA.evaluate() * (pow);
+        this.roundedNum = Math.round(aux) / pow;
     }
 
     @Override
@@ -19,6 +19,7 @@ public class RoundedExpression extends Expression{
         return this.roundedNum;
 
     }
+
     @Override
     public String toString() {
         return this.numA.toString();

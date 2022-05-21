@@ -1,16 +1,16 @@
 public class MultiMultiplication extends Multiplication {
-    private Expression[] numbers;
+    private Expression[] expressions;
 
-    public MultiMultiplication(Expression... numbers) {
-        super(numbers[0], numbers[1]);
-        this.numbers = numbers;
+    public MultiMultiplication(Expression... expressions) {
+        super(expressions[0], expressions[1]);
+        this.expressions = expressions;
 
     }
 
     @Override
     public double evaluate() {
         double eval = 1;
-        for (Expression num : this.numbers) {
+        for (Expression num : this.expressions) {
             eval *= num.evaluate();
         }
         return eval;
@@ -20,10 +20,10 @@ public class MultiMultiplication extends Multiplication {
     public String toString() {
         String MultiAdditionString = "(";
         int i = 0;
-        for (; i < this.numbers.length - 1; i++) {
-            MultiAdditionString += this.numbers[i].toString() + " * ";
+        for (; i < this.expressions.length - 1; i++) {
+            MultiAdditionString += this.expressions[i].toString() + " * ";
         }
-        MultiAdditionString += this.numbers[i].toString() + ")";
+        MultiAdditionString += this.expressions[i].toString() + ")";
         return MultiAdditionString;
     }
 }

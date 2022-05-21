@@ -1,4 +1,4 @@
-public class ReversePolishNotationParser  extends  ExpressionParser {
+public class ReversePolishNotationParser extends ExpressionParser {
 
     @Override
     public Expression parse(String expression) {
@@ -11,7 +11,7 @@ public class ReversePolishNotationParser  extends  ExpressionParser {
             else allExpressions1[i] = numberToClass(listString[i]);
         }
         while (correctArrayLength != 1) {
-            for (int i = 0; i <listString.length; i++) {
+            for (int i = 0; i < listString.length; i++) {
                 if (allExpressions1[i] instanceof PrimitiveOperator) {
                     if (allExpressions1[i].toString().equals("-u")) {
                         allExpressions1[i] = expressionByOperator("-u", allExpressions1[i - 1], numberToClass("0"));
@@ -21,7 +21,7 @@ public class ReversePolishNotationParser  extends  ExpressionParser {
                     } else {
                         allExpressions1[i] = expressionByOperator(allExpressions1[i].toString(), allExpressions1[i - 2], allExpressions1[i - 1]);
                         correctArrayLength -= 2;
-                        allExpressions1 = shrinkArray(allExpressions1, i,2);
+                        allExpressions1 = shrinkArray(allExpressions1, i, 2);
                         break;
                     }
 
@@ -35,11 +35,11 @@ public class ReversePolishNotationParser  extends  ExpressionParser {
 
     private Expression[] shrinkArray(Expression[] expressions, int start, int len) {
         Expression[] newArray = new Expression[expressions.length - len];
-        for (int i = 0; i <= start-len; i++) {
+        for (int i = 0; i <= start - len; i++) {
             newArray[i] = expressions[i];
         }
         for (int i = start; i < expressions.length; i++) {
-            newArray[i-len] = expressions[i];
+            newArray[i - len] = expressions[i];
         }
 
         return newArray;

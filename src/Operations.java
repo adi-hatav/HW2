@@ -8,8 +8,6 @@ public class Operations extends Expression {
         this.expA = expA;
         this.expB = expB;
         this.operator = operator;
-        this.expressionString = "(" + this.expA.toString() + " " + this.operator + " " + this.expB.toString() + ")";
-
     }
 
     @Override
@@ -20,7 +18,7 @@ public class Operations extends Expression {
             case ("*"):
                 return expA.evaluate() * expB.evaluate();
             case ("/"):
-                return  expA.evaluate() / expB.evaluate();
+                return expA.evaluate() / expB.evaluate();
             case ("-"):
                 return expA.evaluate() - expB.evaluate();
             default:
@@ -30,7 +28,7 @@ public class Operations extends Expression {
 
     @Override
     public String toString() {
-        return this.expressionString;
+        return "(" + this.expA.toString() + " " + this.operator + " " + this.expB.toString() + ")";
     }
 
 }
