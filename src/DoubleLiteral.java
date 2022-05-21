@@ -1,18 +1,18 @@
 public class DoubleLiteral extends Expression {
-    private double num;
+    private double number;
 
-    public DoubleLiteral(double num) {
-        this.num = num;
+    public DoubleLiteral(double number) {
+        this.number = number;
     }
 
 
     @Override
     public double evaluate() {
-        return this.num;
+        return this.number;
     }
 
     @Override
     public String toString() {
-        return "(" + num + ")";
+        return "(" + number + ")";
     }
 }

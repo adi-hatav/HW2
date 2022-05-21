@@ -1,12 +1,12 @@
-public class Operations extends Expression {
+public abstract class Operations extends Expression {
 
-    private Expression expA;
-    private Expression expB;
+    private Expression expressionA;
+    private Expression expressionB;
     protected String operator;
 
-    public Operations(Expression expA, Expression expB, String operator) {
-        this.expA = expA;
-        this.expB = expB;
+    public Operations(Expression expressionA, Expression expressionB, String operator) {
+        this.expressionA = expressionA;
+        this.expressionB = expressionB;
         this.operator = operator;
     }
 
@@ -14,21 +14,21 @@ public class Operations extends Expression {
     public double evaluate() {
         switch (this.operator) {
             case ("+"):
-                return expA.evaluate() + expB.evaluate();
+                return expressionA.evaluate() + expressionB.evaluate();
             case ("*"):
-                return expA.evaluate() * expB.evaluate();
+                return expressionA.evaluate() * expressionB.evaluate();
             case ("/"):
-                return expA.evaluate() / expB.evaluate();
+                return expressionA.evaluate() / expressionB.evaluate();
             case ("-"):
-                return expA.evaluate() - expB.evaluate();
+                return expressionA.evaluate() - expressionB.evaluate();
             default:
-                return expA.evaluate();
+                return expressionA.evaluate();
         }
     }
 
     @Override
     public String toString() {
-        return "(" + this.expA.toString() + " " + this.operator + " " + this.expB.toString() + ")";
+        return "(" + this.expressionA.toString() + " " + this.operator + " " + this.expressionB.toString() + ")";
     }
 
 }

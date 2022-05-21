@@ -2,7 +2,6 @@ public class AccurateClock extends Clock {
 
     private final int MAX_SECONDS = 60;
 
-
     public AccurateClock(int hours, int minutes, int seconds) {
         super(hours,minutes);
         this.seconds = (seconds >= MAX_SECONDS || seconds < 0) ? 0 : seconds;

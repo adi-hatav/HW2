@@ -1,19 +1,19 @@
 public class UnaryMinus extends Expression {
 
-    private Expression exp;
+    private Expression expression;
 
     public UnaryMinus(Expression exp) {
-        this.exp = exp;
+        this.expression = exp;
     }
 
     @Override
     public double evaluate() {
-        return (-1) * this.exp.evaluate();
+        return (-1) * this.expression.evaluate();
 
     }
 
     @Override
     public String toString() {
-        return "(-" + this.exp.toString() + ")";
+        return "(-" + this.expression.toString() + ")";
     }
 }

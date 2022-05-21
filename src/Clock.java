@@ -1,3 +1,6 @@
+/** Represents a Clock.
+ *
+ */
 public class Clock {
 
 
@@ -19,6 +22,11 @@ public class Clock {
         return this.seconds;
     }
 
+    /**
+     * clock constructor, sets its seconds as DOESNT_HAVE_SECONDS variable.
+     * @param hours the clock's hour
+     * @param minutes the clock's minutes
+     */
     public Clock(int hours, int minutes) {
         this.hours = (hours > MAX_HOUR || hours < 0) ? 0 : hours;
         this.minutes = (minutes >= MAX_MINUTES || minutes < 0) ? 0 : minutes;
@@ -26,6 +34,11 @@ public class Clock {
 
     }
 
+    /**
+     *
+     * @param other other object to be compared to
+     * @return true if the other object has the same hour and minute and false otherwise
+     */
     @Override
     public boolean equals(Object other) {
         if ((!(other instanceof Clock))||(((Clock) other).getSeconds()!=DOESNT_HAVE_SECONDS))
@@ -38,6 +51,7 @@ public class Clock {
     {
         return MAX_MINUTES*this.hours+this.minutes;
     }
+
     @Override
     public String toString()
     {

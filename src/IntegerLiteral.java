@@ -1,17 +1,17 @@
 public class IntegerLiteral extends Expression {
-    private int num;
+    private int number;
 
-    public IntegerLiteral(int num) {
-        this.num = num;
+    public IntegerLiteral(int number) {
+        this.number = number;
     }
 
     @Override
     public double evaluate() {
-        return this.num;
+        return this.number;
     }
 
     @Override
     public String toString() {
-        return "(" + num + ")";
+        return "(" + number + ")";
     }
 }

@@ -1,6 +1,6 @@
 public class Multiplication  extends Operations {
 
-    public Multiplication(Expression numA, Expression numB) {
-        super(numA, numB, "*");
+    public Multiplication(Expression expressionA, Expression expressionB) {
+        super(expressionA, expressionB, "*");
     }
 }
