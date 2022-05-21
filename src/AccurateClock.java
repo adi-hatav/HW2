@@ -24,8 +24,7 @@ public class AccurateClock extends Clock {
     @Override
     public String toString()
     {
-        String AccurateClockString = (this.hours<10)? "0"+this.hours:""+this.hours;
-        AccurateClockString += (this.minutes<10)? ":0"+this.minutes:":"+this.minutes;
+        String AccurateClockString = super.toString();
         AccurateClockString += (this.seconds<10)? ":0"+this.seconds:":"+this.seconds;
         return AccurateClockString;
     }
