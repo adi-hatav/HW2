@@ -1,6 +1,14 @@
+/**
+ * Represents primitive operator of type expression.
+ */
 public class PrimitiveOperator extends Expression {
     public String operator;
 
+    /**
+     * Primitive operator constructor, creates operator.
+     *
+     * @param operator the operator
+     */
     public PrimitiveOperator(String operator) {
         this.operator = operator;
     }

@@ -1,10 +1,10 @@
-/** Represents a Clock.
- *
+/**
+ * Represents a clock that has only hours and minutes.
  */
 public class Clock {
 
 
-    protected int hours, minutes,seconds;
+    protected int hours, minutes, seconds;
     protected final int MAX_HOUR = 23;
     protected final int MAX_MINUTES = 60;
     protected final int MINUTES_A_DAY = 1440;
@@ -24,39 +24,47 @@ public class Clock {
 
     /**
      * clock constructor, sets its seconds as DOESNT_HAVE_SECONDS variable.
-     * @param hours the clock's hour
+     * if a parameter is invalid it places 0 instead.
+     *
+     * @param hours   the clock's hour
      * @param minutes the clock's minutes
      */
     public Clock(int hours, int minutes) {
         this.hours = (hours > MAX_HOUR || hours < 0) ? 0 : hours;
         this.minutes = (minutes >= MAX_MINUTES || minutes < 0) ? 0 : minutes;
-        this.seconds=DOESNT_HAVE_SECONDS;
+        this.seconds = DOESNT_HAVE_SECONDS;
 
     }
 
     /**
+     * Checks if other object is equal to current clock.
      *
-     * @param other other object to be compared to
+     * @param other object to be compared to
      * @return true if the other object has the same hour and minute and false otherwise
      */
     @Override
     public boolean equals(Object other) {
-        if ((!(other instanceof Clock))||(((Clock) other).getSeconds()!=DOESNT_HAVE_SECONDS))
+        if ((!(other instanceof Clock)) || (((Clock) other).getSeconds() != DOESNT_HAVE_SECONDS))
             return false;
-        Clock c=(Clock)other;
+        Clock c = (Clock) other;
         return this.hours == c.getHours() && this.minutes == c.getMinutes();
     }
+
+    /**
+     * Returns hash code that represent this clock.
+     */
     @Override
-    public int hashCode()
-    {
-        return MAX_MINUTES*this.hours+this.minutes;
+    public int hashCode() {
+        return MAX_MINUTES * this.hours + this.minutes;
     }
 
+    /**
+     * @return string of the clock in this format - HH:MM
+     */
     @Override
-    public String toString()
-    {
-        String clockString = (this.hours<10)? "0"+this.hours:""+this.hours;
-        clockString += (this.minutes<10)? ":0"+this.minutes:":"+this.minutes;
+    public String toString() {
+        String clockString = (this.hours < 10) ? "0" + this.hours : "" + this.hours;
+        clockString += (this.minutes < 10) ? ":0" + this.minutes : ":" + this.minutes;
         return clockString;
     }
 }

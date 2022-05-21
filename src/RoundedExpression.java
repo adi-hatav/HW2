@@ -1,10 +1,18 @@
+/**
+ * Represents arithmetic expression of type Rounded expression.
+ */
 public class RoundedExpression extends Expression {
 
     private Expression expressionA;
     private int numDigitToRound;
     private double roundedNum;
 
-
+    /**
+     * RoundedExpression constructor, calculates the round number based on the numDigitToRound.
+     *
+     * @param expressionA     the expression to round.
+     * @param numDigitToRound the number of digits after the decimal point.
+     */
     public RoundedExpression(Expression expressionA, int numDigitToRound) {
         this.expressionA = expressionA;
         this.numDigitToRound = numDigitToRound;

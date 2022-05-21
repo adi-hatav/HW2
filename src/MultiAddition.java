@@ -1,12 +1,23 @@
+/**
+ * Represents arithmetic expression of type multi addition.
+ */
 public class MultiAddition extends Addition {
     private Expression[] expressions;
 
+    /**
+     * MultiAddition constructor, creates addition of multi expressions.
+     *
+     * @param expressions list of expression
+     */
     public MultiAddition(Expression... expressions) {
         super(expressions[0], expressions[1]);
         this.expressions = expressions;
 
     }
 
+    /**
+     * calculates and returns the addition of all the expressions.
+     */
     @Override
     public double evaluate() {
         double eval = 0;
@@ -16,6 +27,10 @@ public class MultiAddition extends Addition {
         return eval;
     }
 
+    /**
+     * @return a string that includes the expressions, the operator
+     * and brackets at the beginning and the end.
+     */
     @Override
     public String toString() {
         String MultiAdditionString = "(";
