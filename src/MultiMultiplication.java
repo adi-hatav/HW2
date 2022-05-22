@@ -33,12 +33,12 @@ public class MultiMultiplication extends Multiplication {
      */
     @Override
     public String toString() {
-        String MultiAdditionString = "(";
+        String MultiMultiplicationString = "(";
         int i = 0;
         for (; i < this.expressions.length - 1; i++) {
-            MultiAdditionString += this.expressions[i].toString() + " * ";
+            MultiMultiplicationString = MultiMultiplicationString.concat(this.expressions[i].toString() + " * ");
         }
-        MultiAdditionString += this.expressions[i].toString() + ")";
-        return MultiAdditionString;
+        MultiMultiplicationString = MultiMultiplicationString.concat(this.expressions[i].toString() + ")");
+        return MultiMultiplicationString;
     }
 }

@@ -36,9 +36,9 @@ public class MultiAddition extends Addition {
         String MultiAdditionString = "(";
         int i = 0;
         for (; i < this.expressions.length - 1; i++) {
-            MultiAdditionString += this.expressions[i].toString() + " + ";
+            MultiAdditionString =MultiAdditionString.concat(this.expressions[i].toString() + " + ");
         }
-        MultiAdditionString += this.expressions[i].toString() + ")";
+        MultiAdditionString = MultiAdditionString.concat( this.expressions[i].toString() + ")");
         return MultiAdditionString;
     }
 }
