@@ -4,11 +4,10 @@
 public class Clock {
 
 
-    protected int hours, minutes, seconds;
+    protected int hours, minutes;
     protected final int MAX_HOUR = 23;
     protected final int MAX_MINUTES = 60;
     protected final int MINUTES_A_DAY = 1440;
-    protected final int DOESNT_HAVE_SECONDS = -1;
 
     public int getHours() {
         return this.hours;
@@ -18,13 +17,9 @@ public class Clock {
         return this.minutes;
     }
 
-    public int getSeconds() {
-        return this.seconds;
-    }
 
     /**
-     * clock constructor, sets its seconds as DOESNT_HAVE_SECONDS variable.
-     * if a parameter is invalid it places 0 instead.
+     * clock constructor, if a parameter is invalid it places 0 instead.
      *
      * @param hours   the clock's hour
      * @param minutes the clock's minutes
@@ -32,7 +27,6 @@ public class Clock {
     public Clock(int hours, int minutes) {
         this.hours = (hours > MAX_HOUR || hours < 0) ? 0 : hours;
         this.minutes = (minutes >= MAX_MINUTES || minutes < 0) ? 0 : minutes;
-        this.seconds = DOESNT_HAVE_SECONDS;
 
     }
 
@@ -44,7 +38,7 @@ public class Clock {
      */
     @Override
     public boolean equals(Object other) {
-        if ((!(other instanceof Clock)) || (((Clock) other).getSeconds() != DOESNT_HAVE_SECONDS))
+        if ((!(other instanceof Clock)) || other.hashCode() >= MINUTES_A_DAY)
             return false;
         Clock c = (Clock) other;
         return this.hours == c.getHours() && this.minutes == c.getMinutes();

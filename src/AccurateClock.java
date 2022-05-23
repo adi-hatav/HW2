@@ -3,6 +3,7 @@
  */
 public class AccurateClock extends Clock {
 
+    private int seconds;
     private final int MAX_SECONDS = 60;
 
     /**
@@ -18,6 +19,9 @@ public class AccurateClock extends Clock {
         super(hours, minutes);
         this.seconds = (seconds >= MAX_SECONDS || seconds < 0) ? 0 : seconds;
 
+    }
+    public int getSeconds() {
+        return this.seconds;
     }
 
     /**
