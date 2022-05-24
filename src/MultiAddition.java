@@ -9,8 +9,8 @@ public class MultiAddition extends Addition {
      *
      * @param expressions list of expression
      */
-    public MultiAddition(Expression... expressions) {
-        super(expressions[0], expressions[1]);
+    public MultiAddition(Expression expressionA, Expression expressionB, Expression... expressions) {
+        super(expressionA, expressionB);
         this.expressions = expressions;
 
     }
@@ -20,7 +20,7 @@ public class MultiAddition extends Addition {
      */
     @Override
     public double evaluate() {
-        double eval = 0;
+        double eval = super.evaluate();
         for (Expression num : this.expressions) {
             eval += num.evaluate();
         }
@@ -33,7 +33,14 @@ public class MultiAddition extends Addition {
      */
     @Override
     public String toString() {
-        String MultiAdditionString = "(";
+        String MultiAdditionString = super.toString();
+        if (this.expressions.length == 0)
+            return MultiAdditionString;
+
+        // if there are more than 2 multiplications
+        int toStringLength = MultiAdditionString.length();
+        MultiAdditionString = MultiAdditionString.substring(0, toStringLength - 1);
+        MultiAdditionString = MultiAdditionString.concat(" * ");
         int i = 0;
         for (; i < this.expressions.length - 1; i++) {
             MultiAdditionString = MultiAdditionString.concat(this.expressions[i].toString() + " + ");
