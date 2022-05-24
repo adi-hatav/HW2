@@ -37,7 +37,7 @@ public class MultiAddition extends Addition {
         if (this.expressions.length == 0)
             return MultiAdditionString;
 
-        // if there are more than 2 multiplications
+        // if there are more than 2 additions
         int toStringLength = MultiAdditionString.length();
         MultiAdditionString = MultiAdditionString.substring(0, toStringLength - 1);
         MultiAdditionString = MultiAdditionString.concat(" * ");
