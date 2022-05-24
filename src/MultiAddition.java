@@ -40,7 +40,7 @@ public class MultiAddition extends Addition {
         // if there are more than 2 additions
         int toStringLength = MultiAdditionString.length();
         MultiAdditionString = MultiAdditionString.substring(0, toStringLength - 1);
-        MultiAdditionString = MultiAdditionString.concat(" * ");
+        MultiAdditionString = MultiAdditionString.concat(" + ");
         int i = 0;
         for (; i < this.expressions.length - 1; i++) {
             MultiAdditionString = MultiAdditionString.concat(this.expressions[i].toString() + " + ");
